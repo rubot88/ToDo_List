@@ -7,7 +7,6 @@ import AppHeader from './components/AppHeader';
 const App = () => {
   return (
     <div>
-      <span>{(new Date()).toLocaleTimeString()}</span>
       <AppHeader />
       <SearchPanel />
       <ToDoList />
