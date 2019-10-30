@@ -1,25 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
+import SearchPanel from './components/SearchPanel';
+import ToDoList from './components/ToDoList';
+import AppHeader from './components/AppHeader';
 
-const ToDoList = () => {
-  return (
-    <ul>
-      <li>Learn React</li>
-      <li>Awesome App</li>
-    </ul>
-  );
-}
-
-const AppHeader = () => {
-  return <h1>My Todo List</h1>
-}
-
-const SearchPanel = () => {
-  return <input placeholder="search" />
-}
 const App = () => {
   return (
     <div>
+      <span>{(new Date()).toLocaleTimeString()}</span>
       <AppHeader />
       <SearchPanel />
       <ToDoList />
