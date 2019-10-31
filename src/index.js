@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import SearchPanel from './components/SearchPanel';
-import ToDoList from './components/ToDoList';
-import AppHeader from './components/AppHeader';
+import SearchPanel from "./components/SearchPanel";
+import ToDoList from "./components/ToDoList";
+import AppHeader from "./components/AppHeader";
 
 const App = () => {
   return (
@@ -12,6 +12,6 @@ const App = () => {
       <ToDoList />
     </div>
   );
-}
+};
 
 render(<App />, document.getElementById("root"));
