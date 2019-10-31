@@ -1,9 +1,30 @@
 import React from "react";
 import { render } from "react-dom";
 
-function App() {
-  return <div className="App" />;
-}
+const TODoList = () => {
+  return (
+    <ul>
+      <li>Learn React</li>
+      <li>Buold Awesomw App</li>
+    </ul>
+  );
+};
+const AppHeader = () => {
+  return <h1> My Todo List</h1>;
+};
 
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+const SearchPanel = () => {
+  return <input placeholder="search" />;
+};
+
+const App = () => {
+  return (
+    <div>
+      <AppHeader />
+      <SearchPanel />
+      <TODoList />
+    </div>
+  );
+};
+
+render(<App />, document.getElementById("root"));
