@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToDoListItem = ({ label, important = false }) => {
     const spanStyle = {
-        color: important ? 'tomato' : 'black'
+        color: important ? 'red' : 'black'
     }
     return <span style={spanStyle}>{label}</span>;
 };

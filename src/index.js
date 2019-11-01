@@ -5,11 +5,16 @@ import ToDoList from './components/ToDoList';
 import AppHeader from './components/AppHeader';
 
 const App = () => {
+  const todoData = [
+    { label: 'Drink Coffee', important: false },
+    { label: 'Make Awesome App', important: true },
+    { label: 'Have a lunch', important: false }
+  ]
   return (
     <div>
       <AppHeader />
       <SearchPanel />
-      <ToDoList />
+      <ToDoList todos={todoData} />
     </div>
   );
 }
