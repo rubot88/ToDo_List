@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import './ToDoListItem.css'
 
 export default class ToDoListItem extends Component {
+    state = {
+        done: false
+    }
     onLabelClick = () => {
-        console.log(`Done: ${this.props.label}`);
-
+        this.setState({
+            done: !this.state.done
+        })
     };
 
     render() {
         const { label, important = false } = this.props,
             style = {
                 color: important ? 'red' : 'black'
-            }
+            },
+            { done } = this.state;
+        let classNames = "todo-list-item";
+        classNames = done ? `${classNames} done` : classNames;
         return (
-            <span className="todo-list-item">
+            <span className={classNames}>
                 <span className="todo-list-item-label"
                     style={style}
                     onClick={this.onLabelClick.bind(this)}>
