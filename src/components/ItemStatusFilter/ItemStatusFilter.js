@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ItemStatusFilter.css';
 
-const ItemStatusFilter = () => {
-    return (
-        <div className="btn-group">
-            <button type="button"
-                className="btn btn-group-info">
-                All
+export default class ItemStatusFilter extends Component {
+    render() {
+        return (
+            <div className="btn-group">
+                <button type="button"
+                    className="btn btn-info">
+                    All
             </button>
-            <button type="button"
-                className="btn btn-outline-secondary">
-                Active
+                <button type="button"
+                    className="btn btn-outline-secondary">
+                    Active
             </button>
-            <button type="button"
-                className="btn btn-outline-secondary">
-                Done
+                <button type="button"
+                    className="btn btn-outline-secondary">
+                    Done
             </button>
-        </div>
-    );
+            </div>
+        );
+    }
 }
-
-export default ItemStatusFilter;

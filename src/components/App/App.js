@@ -1,7 +1,7 @@
 import React from "react";
-import SearchPanel from '../SearchPanel/';
+import SearchPanel from '../SearchPanel';
 import ToDoList from '../ToDoList';
-import AppHeader from '../AppHeader/';
+import AppHeader from '../AppHeader';
 import ItemStatusFilter from '../ItemStatusFilter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css'
