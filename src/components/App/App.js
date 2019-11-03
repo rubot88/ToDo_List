@@ -18,7 +18,7 @@ export default class App extends Component {
         searchValue: '',
         filter: 'all'
     }
-
+    // fill initial data
     createToDoItem(label) {
         return {
             label,
@@ -27,6 +27,8 @@ export default class App extends Component {
             id: this.maxId++
         }
     }
+
+    // remove item from todo list
     deleteItem = (id) => {
         this.setState(({ todoData }) => {
             const idx = todoData.findIndex((el) => el.id === id),
@@ -37,6 +39,8 @@ export default class App extends Component {
             }
         })
     };
+
+    // add item to todo list
     addItem = (text = "New Item") => {
         const newItem = this.createToDoItem(text);
         this.setState(({ todoData }) => {
@@ -46,6 +50,8 @@ export default class App extends Component {
             };
         })
     }
+
+    // change given property of element in array this.state.todoData
     toggleProperty(arr, id, propName) {
         const idx = arr.findIndex((el) => el.id === id),
             oldItem = arr[idx],
@@ -58,6 +64,8 @@ export default class App extends Component {
         return newArr
 
     }
+
+    // change property "done" in array this.state.todoData by given id
     noToggleDone = (id) => {
         this.setState(({ todoData }) => {
             return {
@@ -65,7 +73,7 @@ export default class App extends Component {
             };
         })
     }
-
+    // change property "important" in array this.state.todoData by given id
     noToggleImportant = (id) => {
         this.setState(({ todoData }) => {
 
@@ -75,12 +83,13 @@ export default class App extends Component {
         })
     }
 
+    //set new state returned from SearchPanel component
     onSearchChange = (value) => {
         this.setState({
             searchValue: value
         })
     }
-
+    // search given string in array
     search = (arr, searchValue) => {
         if (searchValue.length === 0) {
             return arr;
@@ -88,6 +97,8 @@ export default class App extends Component {
         return arr.filter(({ label }) => label.toLowerCase().includes(searchValue.toLocaleLowerCase()));
     }
 
+
+    // filter given array by key 'filter'
     filter = (items, filter) => {
         switch (filter) {
             case 'all':
@@ -101,6 +112,7 @@ export default class App extends Component {
         }
     }
 
+    //set new state returned from ItemStatusFilter component
     onFilterChange = (filter) => {
         this.setState({ filter });
     }
