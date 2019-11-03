@@ -15,13 +15,13 @@ const ToDoListItem = (props) => {
             <button type="button"
                 onClick={onImportantClick}
                 className="btn btn-outline-success btn-sm float-right">
-                <i className="fa fa-exclamation" />
+                !
             </button>
 
             <button type="button"
                 className="btn btn-outline-danger btn-sm float-right"
                 onClick={onDeleted}>
-                <i className="fa fa-trash-o" />
+                Del
             </button>
         </span>
     );
