@@ -75,36 +75,34 @@ export default class App extends Component {
         })
     }
 
-    onChangeSearch = (e) => {
+    onSearchChange = (value) => {
         this.setState({
-            searchValue: e.target.value
+            searchValue: value
         })
     }
-    onBlurSearch = () => {
-        this.setState({
-            searchValue: ''
-        })
-    }
-
-    renderList = (arr) => {
-        const { searchValue } = this.state;
-        if (!searchValue) {
+  
+    search = (arr, searchValue) => {
+        if (searchValue.length === 0) {
             return arr;
         }
-        return arr.filter(({ label }) => label.toLowerCase().includes(searchValue));
+        return arr.filter(({ label }) => label.toLowerCase().includes(searchValue.toLocaleLowerCase()));
+    }
+
+    onFiltered = () => {
+
     }
 
     render() {
         const { todoData, searchValue } = this.state,
             doneCount = todoData.reduce((sum, item) => item.done ? sum + 1 : sum, 0),
             todoCount = todoData.length - doneCount,
-            listToRender = this.renderList(todoData);
+            listToRender = this.search(todoData, searchValue);
 
         return (
             <div className="todo-app ">
                 <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
-                    <SearchPanel onChangeSearch={this.onChangeSearch}
+                    <SearchPanel onSearchChange={this.onSearchChange}
                         onBlurSearch={this.onBlurSearch}
                         value={searchValue}
                     />
