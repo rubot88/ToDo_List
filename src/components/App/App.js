@@ -5,7 +5,6 @@ import AppHeader from '../AppHeader';
 import ItemStatusFilter from '../ItemStatusFilter';
 import ItemAddForm from '../ItemAddForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.css'
 import './App.css';
 
 export default class App extends Component {
