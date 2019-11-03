@@ -16,7 +16,8 @@ export default class App extends Component {
             this.createToDoItem('Make Awesome App'),
             this.createToDoItem('Have a lunch'),
         ],
-        searchValue: ''
+        searchValue: '',
+        filter: 'all'
     }
 
     createToDoItem(label) {
@@ -80,7 +81,7 @@ export default class App extends Component {
             searchValue: value
         })
     }
-  
+
     search = (arr, searchValue) => {
         if (searchValue.length === 0) {
             return arr;
@@ -88,27 +89,46 @@ export default class App extends Component {
         return arr.filter(({ label }) => label.toLowerCase().includes(searchValue.toLocaleLowerCase()));
     }
 
-    onFiltered = () => {
+    filter = (items, filter) => {
+        switch (filter) {
+            case 'all':
+                return items;
+            case 'active':
+                return items.filter(item => !item.done);
+            case 'done':
+                return items.filter(item => item.done);
+            default:
+                return items;
+        }
+    }
 
+    onFilterChange = (filter) => {
+        this.setState({ filter });
     }
 
     render() {
-        const { todoData, searchValue } = this.state,
+        const { todoData, searchValue, filter } = this.state,
             doneCount = todoData.reduce((sum, item) => item.done ? sum + 1 : sum, 0),
             todoCount = todoData.length - doneCount,
-            listToRender = this.search(todoData, searchValue);
+            listToRender = this.filter(this.search(todoData, searchValue), filter);
 
         return (
             <div className="todo-app ">
-                <AppHeader toDo={todoCount} done={doneCount} />
+                <AppHeader
+                    toDo={todoCount}
+                    done={doneCount} />
                 <div className="top-panel d-flex">
-                    <SearchPanel onSearchChange={this.onSearchChange}
+                    <SearchPanel
+                        onSearchChange={this.onSearchChange}
                         onBlurSearch={this.onBlurSearch}
                         value={searchValue}
                     />
-                    <ItemStatusFilter />
+                    <ItemStatusFilter
+                        filter={filter}
+                        onFilterChange={this.onFilterChange} />
                 </div>
-                <ToDoList todos={listToRender}
+                <ToDoList
+                    todos={listToRender}
                     onDeleted={this.deleteItem}
                     onImportantClick={this.noToggleImportant}
                     onDoneClick={this.noToggleDone}
