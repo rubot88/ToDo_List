@@ -12,10 +12,13 @@ class ItemAddForm extends Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAddItem(this.state.label);
-        this.setState({
-            label: ''
-        })
+        const { label } = this.state;
+        if (label) {
+            this.props.onAddItem(label);
+            this.setState({
+                label: ''
+            })
+        }
     }
     render() {
         return (
