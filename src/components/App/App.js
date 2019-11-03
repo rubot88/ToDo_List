@@ -75,12 +75,12 @@ export default class App extends Component {
         })
     }
 
-    onChange = (e) => {
+    onChangeSearch = (e) => {
         this.setState({
             searchValue: e.target.value
         })
     }
-    onBlur = () => {
+    onBlurSearch = () => {
         this.setState({
             searchValue: ''
         })
@@ -104,8 +104,8 @@ export default class App extends Component {
             <div className="todo-app ">
                 <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
-                    <SearchPanel onChange={this.onChange}
-                        onBlur={this.onBlur}
+                    <SearchPanel onChangeSearch={this.onChangeSearch}
+                        onBlurSearch={this.onBlurSearch}
                         value={searchValue}
                     />
                     <ItemStatusFilter />
